@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gym-minigrid"
+version = "0.1.0"
+description = "Discrete 2D grid-based environments for reinforcement learning"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+
+authors = [
+  { name = "Raymond Chua", email = "ray.r.chua@gmail.com" }
+]
+
+dependencies = [
+  "gym>=0.26",
+  "numpy",
+]
+
+[project.urls]
+Homepage = "https://github.com/raymondchua/gym_minigrid"
+Repository = "https://github.com/raymondchua/gym_minigrid"
+Issues = "https://github.com/raymondchua/gym_minigrid/issues"
+
+[tool.setuptools.packages.find]
+where = ["gym_minigrid"]
+include = ["gym_minigrid*"]
