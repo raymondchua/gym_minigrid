@@ -25,5 +25,5 @@ Repository = "https://github.com/raymondchua/gym_minigrid"
 Issues = "https://github.com/raymondchua/gym_minigrid/issues"
 
 [tool.setuptools.packages.find]
-where = ["gym_minigrid"]
-include = ["gym_minigrid*"]
+where = ["."]
+include = ["gym_minigrid", "gym_minigrid.*"]
