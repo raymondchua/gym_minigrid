@@ -414,35 +414,35 @@ class GridworldVertWallTop4_20x20(VertWallTop4Env):
 
 register(
     id="MiniGrid-Gridworld-VertWallTop4-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldVertWallTop4",
+    entry_point="gym_minigrid.envs:GridworldVertWallTop4",
 )
 
 register(
     id="MiniGrid-Gridworld-VertWallTop4-NoGoalVis-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldVertWallTop4NoGoalVis",
+    entry_point="gym_minigrid.envs:GridworldVertWallTop4NoGoalVis",
 )
 
 register(
     id="MiniGrid-Gridworld-VertWallTop4-SameStartPos-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldVertWallTop4SameStartPos",
+    entry_point="gym_minigrid.envs:GridworldVertWallTop4SameStartPos",
 )
 
 register(
     id="MiniGrid-Gridworld-VertWallTop4-NoGoalVis-SameStartPos-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldVertWallTop4NoGoalVisSameStartPos",
+    entry_point="gym_minigrid.envs:GridworldVertWallTop4NoGoalVisSameStartPos",
 )
 
 register(
     id="MiniGrid-Gridworld-VertWallTop4-RandomGoal-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldVertWallTop4RandomGoal",
+    entry_point="gym_minigrid.envs:GridworldVertWallTop4RandomGoal",
 )
 
 register(
     id="MiniGrid-Gridworld-VertWallTop4-RandomGoal-NoGoalVis-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldVertWallTop4RandomGoalNoGoalVis",
+    entry_point="gym_minigrid.envs:GridworldVertWallTop4RandomGoalNoGoalVis",
 )
 
 register(
     id="MiniGrid-Gridworld-VertWallTop4-20x20-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldVertWallTop4_20x20",
+    entry_point="gym_minigrid.envs:GridworldVertWallTop4_20x20",
 )

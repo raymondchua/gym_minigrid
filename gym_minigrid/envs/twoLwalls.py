@@ -360,30 +360,30 @@ class GridworldTwoLWallsNoGoalVisGoalLeftAndRight(TwoLWalls):
 
 register(
     id="MiniGrid-GridworldTwoLWalls-GoalLeft-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworlTwoLWallsGoalLeft",
+    entry_point="gym_minigrid.envs:GridworlTwoLWallsGoalLeft",
 )
 
 register(
     id="MiniGrid-GridworldTwoLWalls-GoalRight-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldTwoLWallsGoalRight",
+    entry_point="gym_minigrid.envs:GridworldTwoLWallsGoalRight",
 )
 
 register(
     id="MiniGrid-GridworldTwoLWalls-NoGoalVis-GoalLeft-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldTwoLWallsNoGoalVisGoalLeft",
+    entry_point="gym_minigrid.envs:GridworldTwoLWallsNoGoalVisGoalLeft",
 )
 
 register(
     id="MiniGrid-GridworldTwoLWalls-NoGoalVis-GoalRight-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldTwoLWallsNoGoalVisGoalRight",
+    entry_point="gym_minigrid.envs:GridworldTwoLWallsNoGoalVisGoalRight",
 )
 
 register(
     id="MiniGrid-GridworldTwoLWalls-GoalLeftAndRight-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldTwoLWallsGoalLeftAndRight",
+    entry_point="gym_minigrid.envs:GridworldTwoLWallsGoalLeftAndRight",
 )
 
 register(
     id="MiniGrid-GridworldTwoLWalls-NoGoalVis-GoalLeftAndRight-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldTwoLWallsNoGoalVisGoalLeftAndRight",
+    entry_point="gym_minigrid.envs:GridworldTwoLWallsNoGoalVisGoalLeftAndRight",
 )

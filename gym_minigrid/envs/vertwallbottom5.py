@@ -299,20 +299,20 @@ class GridworldVertWallBottom5View5NoGoalVis(VertWallBottom5Env):
 
 register(
     id="MiniGrid-Gridworld-VertWallBottom5-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldVertWallBottom5",
+    entry_point="gym_minigrid.envs:GridworldVertWallBottom5",
 )
 
 register(
     id="MiniGrid-Gridworld-VertWallBottom5-NoGoalVis-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldVertWallBottom5NoGoalVis",
+    entry_point="gym_minigrid.envs:GridworldVertWallBottom5NoGoalVis",
 )
 
 register(
     id="MiniGrid-Gridworld-VertWallBottom5View5-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldVertWallBottom5",
+    entry_point="gym_minigrid.envs:GridworldVertWallBottom5",
 )
 
 register(
     id="MiniGrid-Gridworld-VertWallBottom5View5-NoGoalVis-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldVertWallBottom5NoGoalVis",
+    entry_point="gym_minigrid.envs:GridworldVertWallBottom5NoGoalVis",
 )

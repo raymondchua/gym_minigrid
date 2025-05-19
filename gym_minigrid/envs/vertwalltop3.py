@@ -281,10 +281,10 @@ class GridworldVertWallTop3NoGoalVis(VertWallTop3Env):
 
 register(
     id="MiniGrid-Gridworld-VertWallTop3-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldVertWallTop3",
+    entry_point="gym_minigrid.envs:GridworldVertWallTop3",
 )
 
 register(
     id="MiniGrid-Gridworld-VertWallTop3-NoGoalVis-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldVertWallTop3NoGoalVis",
+    entry_point="gym_minigrid.envs:GridworldVertWallTop3NoGoalVis",
 )

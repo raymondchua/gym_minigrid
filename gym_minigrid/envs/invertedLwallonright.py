@@ -305,15 +305,15 @@ class GridworldInvertedLWallOnRight(InvertedLWallOnRightEnv):
 
 register(
     id="MiniGrid-Gridworld-InvertedLWallOnRight-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldInvertedLWallOnRight",
+    entry_point="gym_minigrid.envs:GridworldInvertedLWallOnRight",
 )
 
 register(
     id="MiniGrid-Gridworld-InvertedLWallOnRight-GoalLeft-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldInvertedLWallOnRightGoalLeft",
+    entry_point="gym_minigrid.envs:GridworldInvertedLWallOnRightGoalLeft",
 )
 
 register(
     id="MiniGrid-Gridworld-InvertedLWallOnRight-NoGoalVis-GoalLeft-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldInvertedLWallOnRightNoGoalVisGoalLeft",
+    entry_point="gym_minigrid.envs:GridworldInvertedLWallOnRightNoGoalVisGoalLeft",
 )

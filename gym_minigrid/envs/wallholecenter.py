@@ -282,10 +282,10 @@ class GridworldWallHoleCenterNoGoalVis(WallHoleCenterEnv):
 
 register(
     id="MiniGrid-Gridworld-WallHoleCenter-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldWallHoleCenter",
+    entry_point="gym_minigrid.envs:GridworldWallHoleCenter",
 )
 
 register(
     id="MiniGrid-Gridworld-WallHoleCenter-NoGoalVis-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldWallHoleCenterNoGoalVis",
+    entry_point="gym_minigrid.envs:GridworldWallHoleCenterNoGoalVis",
 )

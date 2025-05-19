@@ -640,151 +640,151 @@ class GridworldEnv12(CustomEnv):
 
 register(
     id="MiniGrid-GridworldEnv2-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv2",
+    entry_point="gym_minigrid.envs:GridworldEnv2",
 )
 
 register(
     id="MiniGrid-GridworldEnv3-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv3",
+    entry_point="gym_minigrid.envs:GridworldEnv3",
 )
 
 register(
     id="MiniGrid-GridworldEnv4-GoalLeft-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv4GoalLeft",
+    entry_point="gym_minigrid.envs:GridworldEnv4GoalLeft",
 )
 
 register(
     id="MiniGrid-GridworldEnv4-GoalRight-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv4GoalRight",
+    entry_point="gym_minigrid.envs:GridworldEnv4GoalRight",
 )
 
 register(
     id="MiniGrid-GridworldEnv5-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv5",
+    entry_point="gym_minigrid.envs:GridworldEnv5",
 )
 
 register(
     id="MiniGrid-GridworldEnv5-NoGoalVis-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv5NoGoalVis",
+    entry_point="gym_minigrid.envs:GridworldEnv5NoGoalVis",
 )
 
 register(
     id="MiniGrid-GridworldEnv6-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv6",
+    entry_point="gym_minigrid.envs:GridworldEnv6",
 )
 
 register(
     id="MiniGrid-GridworldEnv6-GoalLeft-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv6GoalLeft",
+    entry_point="gym_minigrid.envs:GridworldEnv6GoalLeft",
 )
 
 register(
     id="MiniGrid-GridworldEnv6-NoGoalVis-GoalLeft-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv6NoGoalVisGoalLeft",
+    entry_point="gym_minigrid.envs:GridworldEnv6NoGoalVisGoalLeft",
 )
 
 register(
     id="MiniGrid-GridworldEnv7-GoalLeft-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv7GoalLeft",
+    entry_point="gym_minigrid.envs:GridworldEnv7GoalLeft",
 )
 
 register(
     id="MiniGrid-GridworldEnv7-GoalRight-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv7GoalRight",
+    entry_point="gym_minigrid.envs:GridworldEnv7GoalRight",
 )
 
 register(
     id="MiniGrid-GridworldEnv7-NoGoalVis-GoalLeft-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv7NoGoalVisGoalLeft",
+    entry_point="gym_minigrid.envs:GridworldEnv7NoGoalVisGoalLeft",
 )
 
 register(
     id="MiniGrid-GridworldEnv7-NoGoalVis-GoalRight-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv7NoGoalVisGoalRight",
+    entry_point="gym_minigrid.envs:GridworldEnv7NoGoalVisGoalRight",
 )
 
 register(
     id="MiniGrid-GridworldEnv8-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv8",
+    entry_point="gym_minigrid.envs:GridworldEnv8",
 )
 
 register(
     id="MiniGrid-GridworldEnv8-NoGoalVis-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv8NoGoalVis",
+    entry_point="gym_minigrid.envs:GridworldEnv8NoGoalVis",
 )
 
 register(
     id="MiniGrid-GridworldEnv8-5x5-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv8_5x5",
+    entry_point="gym_minigrid.envs:GridworldEnv8_5x5",
 )
 
 register(
     id="MiniGrid-GridworldEnv8-FixStartPos-5x5-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv8_FixStart_5x5",
+    entry_point="gym_minigrid.envs:GridworldEnv8_FixStart_5x5",
 )
 
 register(
     id="MiniGrid-GridworldEnv8-5x5-NoGoalVis-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv8_5x5NoGoalVis",
+    entry_point="gym_minigrid.envs:GridworldEnv8_5x5NoGoalVis",
 )
 
 register(
     id="MiniGrid-GridworldEnv8-FixStartPos-5x5-NoGoalVis-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv8_FixStart_5x5NoGoalVis",
+    entry_point="gym_minigrid.envs:GridworldEnv8_FixStart_5x5NoGoalVis",
 )
 
 register(
     id="MiniGrid-GridworldEnv9-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv9",
+    entry_point="gym_minigrid.envs:GridworldEnv9",
 )
 
 
 register(
     id="MiniGrid-GridworldEnv9-NoGoalVis-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv9NoGoalVis",
+    entry_point="gym_minigrid.envs:GridworldEnv9NoGoalVis",
 )
 
 register(
     id="MiniGrid-GridworldEnv9-5x5-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv9_5x5",
+    entry_point="gym_minigrid.envs:GridworldEnv9_5x5",
 )
 
 register(
     id="MiniGrid-GridworldEnv9-FixStartPos-5x5-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv9_FixStart_5x5",
+    entry_point="gym_minigrid.envs:GridworldEnv9_FixStart_5x5",
 )
 
 register(
     id="MiniGrid-GridworldEnv9-5x5-NoGoalVis-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv9_5x5NoGoalVis",
+    entry_point="gym_minigrid.envs:GridworldEnv9_5x5NoGoalVis",
 )
 
 register(
     id="MiniGrid-GridworldEnv9-FixStartPos-5x5-NoGoalVis-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv9_FixStart_5x5NoGoalVis",
+    entry_point="gym_minigrid.envs:GridworldEnv9_FixStart_5x5NoGoalVis",
 )
 
 register(
     id="MiniGrid-TMaze-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv10",
+    entry_point="gym_minigrid.envs:GridworldEnv10",
 )
 
 register(
     id="MiniGrid-TMaze-NoGoalVis-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv10NoGoalVis",
+    entry_point="gym_minigrid.envs:GridworldEnv10NoGoalVis",
 )
 
 register(
     id="MiniGrid-SquareArena-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv11",
+    entry_point="gym_minigrid.envs:GridworldEnv11",
 )
 
 register(
     id="MiniGrid-SquareArena-NoGoalVis-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv11NoGoalVis",
+    entry_point="gym_minigrid.envs:GridworldEnv11NoGoalVis",
 )
 
 register(
     id="MiniGrid-3x3-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldEnv12",
+    entry_point="gym_minigrid.envs:GridworldEnv12",
 )

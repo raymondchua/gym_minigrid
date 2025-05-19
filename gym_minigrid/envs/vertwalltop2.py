@@ -256,5 +256,5 @@ class GridworldDVertWallTop2(VertWallTop2Env):
 
 register(
     id="MiniGrid-Gridworld-VertWallTop2-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldDVertWallTop2",
+    entry_point="gym_minigrid.envs:GridworldDVertWallTop2",
 )

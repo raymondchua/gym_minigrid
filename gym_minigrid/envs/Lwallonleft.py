@@ -294,10 +294,10 @@ class GridworldLWallOnLeftNoGoalVis(LWallOnLeftEnv):
 
 register(
     id="MiniGrid-Gridworld-LWallOnLeft-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldLWallOnLeft",
+    entry_point="gym_minigrid.envs:GridworldLWallOnLeft",
 )
 
 register(
     id="MiniGrid-Gridworld-LWallOnLeft-NoGoalVis-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldLWallOnLeftNoGoalVis",
+    entry_point="gym_minigrid.envs:GridworldLWallOnLeftNoGoalVis",
 )

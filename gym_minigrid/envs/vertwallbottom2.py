@@ -281,10 +281,10 @@ class GridworldVertWallBottom2NoGoalVis(VertWallBottom2Env):
 
 register(
     id="MiniGrid-Gridworld-VertWallBottom2-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldVertWallBottom2",
+    entry_point="gym_minigrid.envs:GridworldVertWallBottom2",
 )
 
 register(
     id="MiniGrid-Gridworld-VertWallBottom2-NoGoalVis-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldVertWallBottom2NoGoalVis",
+    entry_point="gym_minigrid.envs:GridworldVertWallBottom2NoGoalVis",
 )

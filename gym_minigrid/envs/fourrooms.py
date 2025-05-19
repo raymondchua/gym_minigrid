@@ -78,11 +78,11 @@ class FourRoomsEnv1(FourRoomsEnv):
 
 
 register(
-    id="MiniGrid-FourRooms-v0", entry_point="CRLMSF.environments.gym_minigrid.envs:FourRoomsEnv"
+    id="MiniGrid-FourRooms-v0", entry_point="gym_minigrid.envs:FourRoomsEnv"
 )
 
 register(
-    id="MiniGrid-FourRooms-v1", entry_point="CRLMSF.environments.gym_minigrid.envs:FourRoomsEnv1"
+    id="MiniGrid-FourRooms-v1", entry_point="gym_minigrid.envs:FourRoomsEnv1"
 )
 
 

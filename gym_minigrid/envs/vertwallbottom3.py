@@ -349,31 +349,31 @@ class GridworldVertWallBottom3RandomGoalNoGoalVis(VertWallBottom3Env):
 
 register(
     id="MiniGrid-Gridworld-VertWallBottom3-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldVertWallBottom3",
+    entry_point="gym_minigrid.envs:GridworldVertWallBottom3",
 )
 
 register(
     id="MiniGrid-Gridworld-VertWallBottom3-NoGoalVis-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldVertWallBottom3NoGoalVis",
+    entry_point="gym_minigrid.envs:GridworldVertWallBottom3NoGoalVis",
 )
 
 
 register(
     id="MiniGrid-Gridworld-VertWallBottom3-SameStartPos-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldVertWallBottom3SameStartPos",
+    entry_point="gym_minigrid.envs:GridworldVertWallBottom3SameStartPos",
 )
 
 register(
     id="MiniGrid-Gridworld-VertWallBottom3-NoGoalVis-SameStartPos-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldVertWallBottom3NoGoalVisSameStartPos",
+    entry_point="gym_minigrid.envs:GridworldVertWallBottom3NoGoalVisSameStartPos",
 )
 
 register(
     id="MiniGrid-Gridworld-VertWallBottom3-RandomGoal-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldVertWallBottom3RandomGoal",
+    entry_point="gym_minigrid.envs:GridworldVertWallBottom3RandomGoal",
 )
 
 register(
     id="MiniGrid-Gridworld-VertWallBottom3-RandomGoal-NoGoalVis-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldVertWallBottom3RandomGoalNoGoalVis",
+    entry_point="gym_minigrid.envs:GridworldVertWallBottom3RandomGoalNoGoalVis",
 )

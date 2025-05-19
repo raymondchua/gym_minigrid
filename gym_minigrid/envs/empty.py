@@ -227,77 +227,77 @@ class EmptyEnv16x16(EmptyEnv):
 
 register(
     id="MiniGrid-Empty-5x5-env1-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:EmptyEnv1_5x5",
+    entry_point="gym_minigrid.envs:EmptyEnv1_5x5",
 )
 
 register(
     id="MiniGrid-Empty-Random-5x5-env1-NoGoalVis-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:EmptyEnv1_5x5NoGoalVis",
+    entry_point="gym_minigrid.envs:EmptyEnv1_5x5NoGoalVis",
 )
 
 register(
     id="MiniGrid-Empty-5x5-env2-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:EmptyEnv2_5x5",
+    entry_point="gym_minigrid.envs:EmptyEnv2_5x5",
 )
 
 register(
     id="MiniGrid-Empty-Random-5x5-env2-NoGoalVis-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:EmptyEnv2_5x5NoGoalVis",
+    entry_point="gym_minigrid.envs:EmptyEnv2_5x5NoGoalVis",
 )
 
 register(
     id="MiniGrid-Empty-Random-5x5-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:EmptyRandomEnv5x5",
+    entry_point="gym_minigrid.envs:EmptyRandomEnv5x5",
 )
 
 register(
     id="MiniGrid-Empty-6x6-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:EmptyEnv6x6",
+    entry_point="gym_minigrid.envs:EmptyEnv6x6",
 )
 
 register(
     id="MiniGrid-Empty-Random-6x6-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:EmptyRandomEnv6x6",
+    entry_point="gym_minigrid.envs:EmptyRandomEnv6x6",
 )
 
 register(
     id="MiniGrid-Empty-8x8-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:EmptyEnv",
+    entry_point="gym_minigrid.envs:EmptyEnv",
 )
 
 
 register(
     id="MiniGrid-Empty-Random-env1-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:EmptyRandomEnv1",
+    entry_point="gym_minigrid.envs:EmptyRandomEnv1",
 )
 
 register(
     id="MiniGrid-Empty-env1-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:EmptyEnv1",
+    entry_point="gym_minigrid.envs:EmptyEnv1",
 )
 
 register(
     id="MiniGrid-Empty-Random-env2-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:EmptyRandomEnv2",
+    entry_point="gym_minigrid.envs:EmptyRandomEnv2",
 )
 
 register(
     id="MiniGrid-Empty-env2-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:EmptyEnv2",
+    entry_point="gym_minigrid.envs:EmptyEnv2",
 )
 
 register(
     id="MiniGrid-Empty-16x16-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:EmptyEnv16x16",
+    entry_point="gym_minigrid.envs:EmptyEnv16x16",
 )
 
 register(
     id="MiniGrid-Empty-Random-NoGoalVis-env1-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:EmptyRandomNoGoalVisEnv1",
+    entry_point="gym_minigrid.envs:EmptyRandomNoGoalVisEnv1",
 )
 
 
 register(
     id="MiniGrid-Empty-Random-NoGoalVis-env2-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:EmptyRandomNoGoalVisEnv2",
+    entry_point="gym_minigrid.envs:EmptyRandomNoGoalVisEnv2",
 )

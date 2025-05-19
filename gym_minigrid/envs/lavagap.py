@@ -80,20 +80,20 @@ class LavaGapS12Env(LavaGapEnv):
 
 register(
     id="MiniGrid-LavaGapS5-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:LavaGapS5Env",
+    entry_point="gym_minigrid.envs:LavaGapS5Env",
 )
 
 register(
     id="MiniGrid-LavaGapS6-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:LavaGapS6Env",
+    entry_point="gym_minigrid.envs:LavaGapS6Env",
 )
 
 register(
     id="MiniGrid-LavaGapS7-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:LavaGapS7Env",
+    entry_point="gym_minigrid.envs:LavaGapS7Env",
 )
 
 register(
     id="MiniGrid-LavaGapS12-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:LavaGapS12Env",
+    entry_point="gym_minigrid.envs:LavaGapS12Env",
 )

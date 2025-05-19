@@ -305,20 +305,20 @@ class GridworldVertWallTop6View5NoGoalVis(VertWallTop6Env):
 
 register(
     id="MiniGrid-Gridworld-VertWallTop6-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldVertWallTop6",
+    entry_point="gym_minigrid.envs:GridworldVertWallTop6",
 )
 
 register(
     id="MiniGrid-Gridworld-VertWallTop6-NoGoalVis-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldVertWallTop6NoGoalVis",
+    entry_point="gym_minigrid.envs:GridworldVertWallTop6NoGoalVis",
 )
 
 register(
     id="MiniGrid-Gridworld-VertWallTop6View5-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldVertWallTop6View5",
+    entry_point="gym_minigrid.envs:GridworldVertWallTop6View5",
 )
 
 register(
     id="MiniGrid-Gridworld-VertWallTop6View5-NoGoalVis-v0",
-    entry_point="CRLMSF.environments.gym_minigrid.envs:GridworldVertWallTop6View5NoGoalVis",
+    entry_point="gym_minigrid.envs:GridworldVertWallTop6View5NoGoalVis",
 )
