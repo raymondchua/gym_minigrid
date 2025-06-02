@@ -8,7 +8,8 @@ import random
 import gym_minigrid
 
 from window import Window
-from wrappers import ImgObsWrapper,RGBImgPartialObsWrapper, RGBImgObsWrapper
+from wrappers import ImgObsWrapper, RGBImgPartialObsWrapper, RGBImgObsWrapper
+
 # from environments import gym_minigrid
 # from environments.gym_minigrid.wrappers import *
 # from environments.gym_minigrid.window import Window
@@ -42,13 +43,21 @@ class manual_control:
         np.random.seed(self.args.seed)
         game = self.args.env
 
+        # need to use ImgObsWrapper to prevent minigrid decoding error
         if self.args.agent_view:
-            self.env = RGBImgPartialObsWrapper(
-                gym.make(game, disable_env_checker=True),
-                tile_size=self.args.tile_size,
+            self.env = ImgObsWrapper(
+                RGBImgPartialObsWrapper(
+                    gym.make(game, disable_env_checker=True),
+                    tile_size=self.args.tile_size,
+                )
             )
         else:
-            self.env = RGBImgObsWrapper(gym.make(game, disable_env_checker=True), tile_size=self.args.tile_size)
+            self.env = ImgObsWrapper(
+                RGBImgObsWrapper(
+                    gym.make(game, disable_env_checker=True),
+                    tile_size=self.args.tile_size,
+                )
+            )
 
         if window is None:
             window = Window("minigrid - " + str(self.env.__class__))
@@ -82,7 +91,9 @@ class manual_control:
 
     def redraw(self):
         if not self.args.agent_view:
-            img = self.env.render(mode="rgb_array", tile_size=self.args.tile_size, highlight=False)
+            img = self.env.render(
+                mode="rgb_array", tile_size=self.args.tile_size, highlight=False
+            )
 
         else:
             img = self.env.render(
@@ -172,7 +183,9 @@ def parse_flags(argv):
     )
 
     parser.add_argument(
-        "--env", help="gym environment to load", default="MiniGrid-Gridworld-VertWallTop4-20x20-v0"
+        "--env",
+        help="gym environment to load",
+        default="MiniGrid-Gridworld-VertWallTop4-20x20-v0",
     )
     parser.add_argument(
         "--seed",
