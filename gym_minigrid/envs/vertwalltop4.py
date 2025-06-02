@@ -35,7 +35,8 @@ class VertWallTop4Env(MiniGridEnv):
         self.obstacles_coverage = obstacles_coverage
         self.obstacles_init = []
         self.bottleneck_state = (self.size//2, self.size_without_walls)
-        self.obstacles_coverage_colors = ["blue", "red", "green", "yellow"]
+        self.obstacles_coverage_colors = ["blue", "red", "yellow"]
+        self.obstacles_colors = []
 
         print("bot state: ", self.bottleneck_state)
 
@@ -72,6 +73,11 @@ class VertWallTop4Env(MiniGridEnv):
                     y = self.rng.randint(1, self.size - 1)
 
                 self.obstacles_init.append((x, y))
+                self.obstacles_colors.append(self.obstacles_coverage_colors[
+                    self.rng.randint(len(self.obstacles_coverage_colors))
+                ])
+
+
 
         # remove obstacles that are within 3 cells of the goal
         self.obstacles_init = [
@@ -127,12 +133,9 @@ class VertWallTop4Env(MiniGridEnv):
             self.put_obj(self.obstacle_type(), x, y)
 
         if self.obstacles_coverage > 0:
-            for (x, y) in self.obstacles_init:
+            for idx, (x, y) in enumerate(self.obstacles_init):
                 # get a random color for the floor using self.obstacles_coverage_colors and self.rng
-                color = self.obstacles_coverage_colors[
-                    self.rng.randint(len(self.obstacles_coverage_colors))
-                ]
-                self.put_obj(Floor(color), x, y)
+                self.put_obj(Floor(self.obstacles_colors[idx]), x, y)
 
         else:
             # Add lava on the left side of the environment
@@ -220,13 +223,9 @@ class VertWallTop4Env(MiniGridEnv):
         # randomly based on the obstacles_coverage percentage. If the cell is already
         # occupied by an obstacle, skip it. The obstacles will have the lava type.
         if self.obstacles_coverage > 0:
-            if self.obstacles_coverage > 0:
-                for (x, y) in self.obstacles_init:
-                    # get a random color for the floor using self.obstacles_coverage_colors and self.rng
-                    color = self.obstacles_coverage_colors[
-                        self.rng.randint(len(self.obstacles_coverage_colors))
-                    ]
-                    self.put_obj(Floor(color), x, y)
+            for idx, (x, y) in enumerate(self.obstacles_init):
+                # get a random color for the floor using self.obstacles_coverage_colors and self.rng
+                self.put_obj(Floor(self.obstacles_colors[idx]), x, y)
 
         else:
             # Add lava on the left side of the environment

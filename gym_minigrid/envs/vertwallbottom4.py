@@ -35,7 +35,8 @@ class VertWallBottom4Env(MiniGridEnv):
         self.obstacles_coverage = obstacles_coverage
         self.obstacles_init = []
         self.bottleneck_state = (self.size // 2, self.size_without_walls)
-        self.obstacles_coverage_colors = ["blue", "red", "green", "yellow"]
+        self.obstacles_coverage_colors = ["blue", "red", "yellow"]
+        self.obstacles_colors = []
 
         # random seed for obstacles so that the same environment can be generated and not change by the seed of numpy.
         self.rng = np.random.RandomState(obstacles_seed)
@@ -70,21 +71,34 @@ class VertWallBottom4Env(MiniGridEnv):
                     y = self.rng.randint(1, self.size - 1)
 
                 self.obstacles_init.append((x, y))
+                self.obstacles_colors.append(
+                    self.obstacles_coverage_colors[
+                        self.rng.randint(len(self.obstacles_coverage_colors))
+                    ]
+                )
 
         # remove obstacles that are within 3 cells of the goal
         self.obstacles_init = [
-            obs for obs in self.obstacles_init if np.abs(obs[0] - self.goal_pos["x"]) > 3 or np.abs(obs[1] - self.goal_pos["y"]) > 3
+            obs
+            for obs in self.obstacles_init
+            if np.abs(obs[0] - self.goal_pos["x"]) > 3
+            or np.abs(obs[1] - self.goal_pos["y"]) > 3
         ]
 
         # remove obstacles that are within 3 cells of the bottleneck state
         self.obstacles_init = [
-            obs for obs in self.obstacles_init if np.abs(obs[0] - self.bottleneck_state[0]) > 3 or np.abs(obs[1] - self.bottleneck_state[1]) > 3
+            obs
+            for obs in self.obstacles_init
+            if np.abs(obs[0] - self.bottleneck_state[0]) > 3
+            or np.abs(obs[1] - self.bottleneck_state[1]) > 3
         ]
 
         # for each corner of the grid, remove obstacles that are within 3 cells of the corner
         for i, j in itt.product([1, self.size - 2], [1, self.size - 2]):
             self.obstacles_init = [
-                obs for obs in self.obstacles_init if np.abs(obs[0] - i) > 3 or np.abs(obs[1] - j) > 3
+                obs
+                for obs in self.obstacles_init
+                if np.abs(obs[0] - i) > 3 or np.abs(obs[1] - j) > 3
             ]
 
     def _gen_grid(self, width, height):
@@ -125,12 +139,9 @@ class VertWallBottom4Env(MiniGridEnv):
             self.put_obj(self.obstacle_type(), x, y)
 
         if self.obstacles_coverage > 0:
-            for (x, y) in self.obstacles_init:
+            for idx, (x, y) in enumerate(self.obstacles_init):
                 # get a random color for the floor using self.obstacles_coverage_colors and self.rng
-                color = self.obstacles_coverage_colors[
-                    self.rng.randint(len(self.obstacles_coverage_colors))
-                ]
-                self.put_obj(Floor(color), x, y)
+                self.put_obj(Floor(self.obstacles_colors[idx]), x, y)
 
         self.put_obj(
             Goal(show_goal=self.show_goal), self.goal_pos["x"], self.goal_pos["y"]
@@ -197,13 +208,9 @@ class VertWallBottom4Env(MiniGridEnv):
         # randomly based on the obstacles_coverage percentage. If the cell is already
         # occupied by an obstacle, skip it. The obstacles will have the lava type.
         if self.obstacles_coverage > 0:
-            if self.obstacles_coverage > 0:
-                for (x, y) in self.obstacles_init:
-                    # get a random color for the floor using self.obstacles_coverage_colors and self.rng
-                    color = self.obstacles_coverage_colors[
-                        self.rng.randint(len(self.obstacles_coverage_colors))
-                    ]
-                    self.put_obj(Floor(color), x, y)
+            for idx, (x, y) in enumerate(self.obstacles_init):
+                # get a random color for the floor using self.obstacles_coverage_colors and self.rng
+                self.put_obj(Floor(self.obstacles_colors[idx]), x, y)
 
         self.put_obj(
             Goal(show_goal=self.show_goal), self.goal_pos["x"], self.goal_pos["y"]
@@ -325,6 +332,7 @@ class GridworldVertWallBottom4NoGoalVis(VertWallBottom4Env):
             goal_pos=dict(x=5, y=5),
             show_goal=False,
         )
+
 
 class GridworldVertWallBottom4_20x20(VertWallBottom4Env):
     def __init__(self):
