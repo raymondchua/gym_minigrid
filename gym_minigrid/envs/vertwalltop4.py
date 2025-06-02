@@ -127,7 +127,8 @@ class VertWallTop4Env(MiniGridEnv):
 
         if self.obstacles_coverage > 0:
             for (x, y) in self.obstacles_init:
-                self.put_obj(Lava(), x, y)
+                # self.put_obj(Lava(), x, y)
+                self.put_obj(Box("blue"), x, y)
 
         else:
             # Add lava on the left side of the environment
@@ -217,7 +218,8 @@ class VertWallTop4Env(MiniGridEnv):
         if self.obstacles_coverage > 0:
             if self.obstacles_coverage > 0:
                 for (x, y) in self.obstacles_init:
-                    self.put_obj(Lava(), x, y)
+                    # self.put_obj(Lava(), x, y)
+                    self.put_obj(Box("blue"), x, y)
 
         else:
             # Add lava on the left side of the environment
