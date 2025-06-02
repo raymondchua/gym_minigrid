@@ -43,12 +43,12 @@ class manual_control:
         game = self.args.env
 
         if self.args.agent_view:
-            self.env = ImgObsWrapper(RGBImgPartialObsWrapper(
+            self.env = RGBImgPartialObsWrapper(
                 gym.make(game, disable_env_checker=True),
                 tile_size=self.args.tile_size,
-            ))
+            )
         else:
-            self.env = ImgObsWrapper(RGBImgObsWrapper(gym.make(game, disable_env_checker=True), tile_size=self.args.tile_size))
+            self.env = RGBImgObsWrapper(gym.make(game, disable_env_checker=True), tile_size=self.args.tile_size)
 
         if window is None:
             window = Window("minigrid - " + str(self.env.__class__))
