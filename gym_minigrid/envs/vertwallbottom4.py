@@ -160,7 +160,7 @@ class VertWallBottom4Env(MiniGridEnv):
         else:
             self.place_agent()
 
-        self.mission = "get to the yellow box"
+        self.mission = "get to the green box"
 
     def _gen_grid_custom(
         self, width, height, custom_agent_pos=None, custom_agent_dir=None
@@ -233,7 +233,7 @@ class VertWallBottom4Env(MiniGridEnv):
         else:
             self.place_agent()
 
-        self.mission = "get to the yellow goal square"
+        self.mission = "get to the green goal square"
 
     def _reward(self):
         """
