@@ -109,8 +109,8 @@ class manual_control:
         obs, reward, terminated, truncated, info = self.env.step(action)
         print(f"step={self.env.step_count}, reward={reward:.2f}")
         print("obs:", obs)
-        print("obs image shape:", obs["image"].shape)
-        img = self.env.get_obs_render(obs["image"], tile_size=self.args.tile_size)
+        print("obs image shape:", obs.shape)
+        img = self.env.get_obs_render(obs, tile_size=self.args.tile_size)
 
         if self.args.agent_view:
             # save image with the name containing agent_view_true
