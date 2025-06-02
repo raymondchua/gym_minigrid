@@ -121,7 +121,6 @@ class WorldObj:
     @staticmethod
     def decode(type_idx, color_idx, state, show_goal: bool):
         """Create an object from a 3-tuple state description"""
-        print("Decoding object type %d, color %d, state %d" % (type_idx, color_idx, state))
         obj_type = IDX_TO_OBJECT[type_idx]
         color = IDX_TO_COLOR[color_idx]
 
