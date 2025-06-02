@@ -41,7 +41,15 @@ class manual_control:
         random.seed(self.args.seed)
         np.random.seed(self.args.seed)
         game = self.args.env
-        self.env = ImgObsWrapper(RGBImgPartialObsWrapper(gym.make(game, disable_env_checker=True), tile_size=32))
+        # self.env = ImgObsWrapper(RGBImgPartialObsWrapper(gym.make(game, disable_env_checker=True), tile_size=32))
+
+        if self.args.agent_view:
+            self.env = RGBImgPartialObsWrapper(
+                gym.make(game, disable_env_checker=True),
+                tile_size=self.args.tile_size,
+            )
+        else:
+            self.env = ImgObsWrapper(gym.make(game, disable_env_checker=True), tile_size=self.args.tile_size)
 
         if window is None:
             window = Window("minigrid - " + str(self.env.__class__))
@@ -76,6 +84,13 @@ class manual_control:
     def redraw(self):
         if not self.args.agent_view:
             img = self.env.render(mode="rgb_array", tile_size=self.args.tile_size, highlight=False)
+
+        else:
+            img = self.env.render(
+                mode="rgb_array",
+                tile_size=self.args.tile_size,
+                highlight=True,
+            )
 
         self.window.show_img(img)
 
