@@ -8,7 +8,7 @@ import random
 import gym_minigrid
 
 from window import Window
-from wrappers import ImgObsWrapper, RGBImgPartialObsWrapper
+from wrappers import ImgObsWrapper,RGBImgPartialObsWrapper, RGBImgObsWrapper
 # from environments import gym_minigrid
 # from environments.gym_minigrid.wrappers import *
 # from environments.gym_minigrid.window import Window
@@ -41,15 +41,14 @@ class manual_control:
         random.seed(self.args.seed)
         np.random.seed(self.args.seed)
         game = self.args.env
-        # self.env = ImgObsWrapper(RGBImgPartialObsWrapper(gym.make(game, disable_env_checker=True), tile_size=32))
 
         if self.args.agent_view:
-            self.env = RGBImgPartialObsWrapper(
+            self.env = ImgObsWrapper(RGBImgPartialObsWrapper(
                 gym.make(game, disable_env_checker=True),
                 tile_size=self.args.tile_size,
-            )
+            ))
         else:
-            self.env = ImgObsWrapper(gym.make(game, disable_env_checker=True), tile_size=self.args.tile_size)
+            self.env = ImgObsWrapper(RGBImgObsWrapper(gym.make(game, disable_env_checker=True), tile_size=self.args.tile_size))
 
         if window is None:
             window = Window("minigrid - " + str(self.env.__class__))
