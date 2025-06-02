@@ -142,16 +142,16 @@ class VertWallBottom4Env(MiniGridEnv):
             for idx, (x, y) in enumerate(self.obstacles_init):
                 # get a random color for the floor using self.obstacles_coverage_colors and self.rng
                 self.put_obj(Floor(self.obstacles_colors[idx]), x, y)
+        else:
+            # Add lava on the right side of the environment
+            self.put_obj(Lava(), 4, 2)
+
+            # Add lava on the left side of the environment
+            self.put_obj(Lava(), 1, 3)
 
         self.put_obj(
             Goal(show_goal=self.show_goal), self.goal_pos["x"], self.goal_pos["y"]
         )
-
-        # Add lava on the right side of the environment
-        self.put_obj(Lava(), 4, 2)
-
-        # Add lava on the left side of the environment
-        self.put_obj(Lava(), 1, 3)
 
         # Place the agent
         if self.agent_start_pos is not None:
@@ -212,15 +212,16 @@ class VertWallBottom4Env(MiniGridEnv):
                 # get a random color for the floor using self.obstacles_coverage_colors and self.rng
                 self.put_obj(Floor(self.obstacles_colors[idx]), x, y)
 
+        else:
+            # Add lava on the right side of the environment
+            self.put_obj(Lava(), 4, 2)
+
+            # Add lava on the left side of the environment
+            self.put_obj(Lava(), 1, 3)
+
         self.put_obj(
             Goal(show_goal=self.show_goal), self.goal_pos["x"], self.goal_pos["y"]
         )
-
-        # Add lava on the right side of the environment
-        self.put_obj(Lava(), 4, 2)
-
-        # Add lava on the left side of the environment
-        self.put_obj(Lava(), 1, 3)
 
         # Place the agent
         if self.custom_agent_pos is not None:
