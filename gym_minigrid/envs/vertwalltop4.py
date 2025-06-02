@@ -35,6 +35,7 @@ class VertWallTop4Env(MiniGridEnv):
         self.obstacles_coverage = obstacles_coverage
         self.obstacles_init = []
         self.bottleneck_state = (self.size//2, self.size_without_walls)
+        self.obstacles_coverage_colors = ["blue", "red", "green", "yellow"]
 
         print("bot state: ", self.bottleneck_state)
 
@@ -127,8 +128,11 @@ class VertWallTop4Env(MiniGridEnv):
 
         if self.obstacles_coverage > 0:
             for (x, y) in self.obstacles_init:
-                # self.put_obj(Lava(), x, y)
-                self.put_obj(Floor("blue"), x, y)
+                # get a random color for the floor using self.obstacles_coverage_colors and self.rng
+                color = self.obstacles_coverage_colors[
+                    self.rng.randint(len(self.obstacles_coverage_colors))
+                ]
+                self.put_obj(Floor(color), x, y)
 
         else:
             # Add lava on the left side of the environment
@@ -218,8 +222,11 @@ class VertWallTop4Env(MiniGridEnv):
         if self.obstacles_coverage > 0:
             if self.obstacles_coverage > 0:
                 for (x, y) in self.obstacles_init:
-                    # self.put_obj(Lava(), x, y)
-                    self.put_obj(Floor("blue"), x, y)
+                    # get a random color for the floor using self.obstacles_coverage_colors and self.rng
+                    color = self.obstacles_coverage_colors[
+                        self.rng.randint(len(self.obstacles_coverage_colors))
+                    ]
+                    self.put_obj(Floor(color), x, y)
 
         else:
             # Add lava on the left side of the environment
