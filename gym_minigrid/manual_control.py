@@ -113,16 +113,12 @@ class manual_control:
 
         if self.args.agent_view:
             # save image with the name containing agent_view_true
-            img = self.env.render(
-                mode="rgb_array", highlight=not self.args.agent_view, tile_size=self.args.tile_size
-            )
             img_name = f"agent_view_true_step_{self.env.step_count}.png"
-            cv2.imwrite(img_name, img)
+            cv2.imwrite(img_name, obs)
         else:
             # save image with the name containing agent_view_false
-            img = self.env.get_obs_render(obs, tile_size=self.args.tile_size)
             img_name = f"agent_view_false_step_{self.env.step_count}.png"
-            cv2.imwrite(img_name, img)
+            cv2.imwrite(img_name, obs)
 
         if terminated:
             print("terminated!")
