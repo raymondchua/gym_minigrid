@@ -110,14 +110,17 @@ class manual_control:
         print(f"step={self.env.step_count}, reward={reward:.2f}")
         print("obs:", obs)
         print("obs image shape:", obs.shape)
-        img = self.env.get_obs_render(obs, tile_size=self.args.tile_size)
 
         if self.args.agent_view:
             # save image with the name containing agent_view_true
+            img = self.env.render(
+                mode="rgb_array", highlight=not self.args.agent_view, tile_size=self.args.tile_size
+            )
             img_name = f"agent_view_true_step_{self.env.step_count}.png"
             cv2.imwrite(img_name, img)
         else:
             # save image with the name containing agent_view_false
+            img = self.env.get_obs_render(obs["image"], tile_size=self.args.tile_size)
             img_name = f"agent_view_false_step_{self.env.step_count}.png"
             cv2.imwrite(img_name, img)
 
