@@ -97,6 +97,8 @@ class manual_control:
 
         obs, reward, terminated, truncated, info = self.env.step(action)
         print(f"step={self.env.step_count}, reward={reward:.2f}")
+        print("obs:", obs)
+        print("obs shape:", obs.shape)
 
         if terminated:
             print("terminated!")
