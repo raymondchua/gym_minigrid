@@ -108,16 +108,14 @@ class manual_control:
 
         obs, reward, terminated, truncated, info = self.env.step(action)
         print(f"step={self.env.step_count}, reward={reward:.2f}")
-        print("obs:", obs)
-        print("obs image shape:", obs.shape)
+        if self.args.save_images:
+            if self.args.agent_view:
+                # save image with the name containing agent_view_true
+                img_name = f"agent_view_true_step_{self.env.step_count}.png"
+            else:
+                # save image with the name containing agent_view_false
+                img_name = f"agent_view_false_step_{self.env.step_count}.png"
 
-        if self.args.agent_view:
-            # save image with the name containing agent_view_true
-            img_name = f"agent_view_true_step_{self.env.step_count}.png"
-            cv2.imwrite(img_name, obs)
-        else:
-            # save image with the name containing agent_view_false
-            img_name = f"agent_view_false_step_{self.env.step_count}.png"
             cv2.imwrite(img_name, obs)
 
         if terminated:
@@ -200,6 +198,7 @@ def parse_flags(argv):
         "--grid_size", type=int, help="size of the grid on each side", default=10
     )
 
+
     parser.add_argument(
         "--environment_height",
         type=int,
@@ -218,6 +217,13 @@ def parse_flags(argv):
         "--agent_view",
         default=False,
         help="draw the agent sees (partially observable view)",
+        action="store_true",
+    )
+
+    parser.add_argument(
+        "--save_images",
+        default=False,
+        help="save images of the environment",
         action="store_true",
     )
 
