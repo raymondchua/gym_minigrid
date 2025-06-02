@@ -120,7 +120,7 @@ class manual_control:
             cv2.imwrite(img_name, img)
         else:
             # save image with the name containing agent_view_false
-            img = self.env.get_obs_render(obs["image"], tile_size=self.args.tile_size)
+            img = self.env.get_obs_render(obs, tile_size=self.args.tile_size)
             img_name = f"agent_view_false_step_{self.env.step_count}.png"
             cv2.imwrite(img_name, img)
 
