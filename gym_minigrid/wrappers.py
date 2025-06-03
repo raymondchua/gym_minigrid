@@ -321,7 +321,7 @@ class ViewSizeWrapper(gym.core.Wrapper):
         return self.env.step(action)
 
 
-from minigrid import Goal
+from gym_minigrid.minigrid import Goal
 
 
 class DirectionObsWrapper(gym.core.ObservationWrapper):
