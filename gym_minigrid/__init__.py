@@ -1,5 +1,5 @@
 # Import the envs module so that envs register themselves
-from . import envs
+from .envs import *
 
 # Import wrappers so it's accessible when installing with pip
-from . import wrappers
+from .wrappers import *
