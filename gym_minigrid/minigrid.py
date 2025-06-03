@@ -5,7 +5,7 @@ from enum import IntEnum
 import numpy as np
 from gym import error, spaces, utils
 from gym.utils import seeding
-from rendering import *
+from gym_minigrid.rendering import *
 
 # Size in pixels of a tile in the full-scale human view
 TILE_PIXELS = 32
