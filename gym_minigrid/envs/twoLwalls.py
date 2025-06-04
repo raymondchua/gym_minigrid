@@ -77,10 +77,12 @@ class TwoLWalls(MiniGridEnv):
                 ])
 
         # remove obstacles that are within 3 cells of the goal
-        self.obstacles_init = [
-            obs for obs in self.obstacles_init if
-            np.abs(obs[0] - self.goal_pos["x"]) > 3 or np.abs(obs[1] - self.goal_pos["y"]) > 3
-        ]
+        for i in range(len(self.goal_pos)):
+            current_goal = self.goal_pos[i]
+            self.obstacles_init = [
+                obs for obs in self.obstacles_init if
+                np.abs(obs[0] - current_goal["x"]) > 3 or np.abs(obs[1] - current_goal["y"]) > 3
+            ]
 
         # for each corner of the grid, remove obstacles that are within 3 cells of the corner
         for i, j in itt.product([1, self.size - 2], [1, self.size - 2]):
@@ -359,7 +361,7 @@ class GridworldTwoLWallsGoalLeft_20x20(TwoLWalls):
         super().__init__(
             size=22,
             env_id=7,
-            goal_pos=dict(x=1, y=11),
+            goal_pos=[dict(x=1, y=11)],
             show_goal=True,
             obstacles_coverage=0.2,
         )
@@ -380,7 +382,7 @@ class GridworldTwoLWallsGoalRight_20x20(TwoLWalls):
         super().__init__(
             size=22,
             env_id=7,
-            goal_pos=dict(x=20, y=11),
+            goal_pos=[dict(x=20, y=11)],
             show_goal=True,
             obstacles_coverage=0.2,
         )
