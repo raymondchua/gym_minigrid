@@ -22,7 +22,7 @@ class TwoLWalls(MiniGridEnv):
         agent_start_dir=None,
         obstacle_type=Wall,
         env_id=2,
-        goal_pos: list = None,
+        goal_pos = None,
         max_steps: int = None,
         show_goal: bool = True,
     ):
@@ -359,7 +359,7 @@ class GridworldTwoLWallsGoalLeft_20x20(TwoLWalls):
         super().__init__(
             size=22,
             env_id=7,
-            goal_pos=[dict(x=1, y=11)],
+            goal_pos=dict(x=1, y=11),
             show_goal=True,
             obstacles_coverage=0.2,
         )
@@ -380,7 +380,7 @@ class GridworldTwoLWallsGoalRight_20x20(TwoLWalls):
         super().__init__(
             size=22,
             env_id=7,
-            goal_pos=[dict(x=20, y=11)],
+            goal_pos=dict(x=20, y=11),
             show_goal=True,
             obstacles_coverage=0.2,
         )
