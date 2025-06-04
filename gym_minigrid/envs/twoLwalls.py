@@ -420,6 +420,16 @@ class GridworldTwoLWallsGoalLeftAndRight(TwoLWalls):
             show_goal=True,
         )
 
+class GridworldTwoLWallsGoalLeftAndRight_20x20(TwoLWalls):
+    def __init__(self):
+        super().__init__(
+            size=22,
+            env_id=7,
+            goal_pos=[dict(x=1, y=11), dict(x=20, y=11)],
+            show_goal=True,
+            obstacles_coverage=0.2,
+        )
+
 
 class GridworldTwoLWallsNoGoalVisGoalLeftAndRight(TwoLWalls):
     def __init__(self):
@@ -466,6 +476,12 @@ register(
     id="MiniGrid-GridworldTwoLWalls-GoalLeftAndRight-v0",
     entry_point="gym_minigrid.envs:GridworldTwoLWallsGoalLeftAndRight",
 )
+
+register(
+    id="MiniGrid-GridworldTwoLWalls-GoalLeftAndRight-20x20-v0",
+    entry_point="gym_minigrid.envs:GridworldTwoLWallsGoalLeftAndRight_20x20",
+)
+
 
 register(
     id="MiniGrid-GridworldTwoLWalls-NoGoalVis-GoalLeftAndRight-v0",
