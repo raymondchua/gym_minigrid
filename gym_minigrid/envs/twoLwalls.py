@@ -361,6 +361,7 @@ class GridworldTwoLWallsGoalLeft_20x20(TwoLWalls):
             env_id=7,
             goal_pos=[dict(x=1, y=11)],
             show_goal=True,
+            obstacles_coverage=0.2,
         )
 
 
@@ -381,6 +382,7 @@ class GridworldTwoLWallsGoalRight_20x20(TwoLWalls):
             env_id=7,
             goal_pos=[dict(x=20, y=11)],
             show_goal=True,
+            obstacles_coverage=0.2,
         )
 
 
