@@ -77,8 +77,6 @@ class VertWallTop4Env(MiniGridEnv):
                     self.rng.randint(len(self.obstacles_coverage_colors))
                 ])
 
-
-
         # remove obstacles that are within 3 cells of the goal
         self.obstacles_init = [
             obs for obs in self.obstacles_init if np.abs(obs[0] - self.goal_pos["x"]) > 3 or np.abs(obs[1] - self.goal_pos["y"]) > 3

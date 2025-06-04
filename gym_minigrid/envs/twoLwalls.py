@@ -16,6 +16,8 @@ class TwoLWalls(MiniGridEnv):
     def __init__(
         self,
         size=9,
+        obstacles_coverage: float = 0.0,  # percentage of the grid covered by obstacles
+        obstacles_seed: int = 194,
         agent_start_pos=None,
         agent_start_dir=None,
         obstacle_type=Wall,
@@ -32,6 +34,13 @@ class TwoLWalls(MiniGridEnv):
         self.goal_pos = goal_pos
         self.size_without_walls = size - 2
         self.show_goal = show_goal
+        self.obstacles_coverage = obstacles_coverage
+        self.obstacles_init = []
+        self.obstacles_coverage_colors = ["blue", "red", "yellow"]
+        self.obstacles_colors = []
+
+        # random seed for obstacles so that the same environment can be generated and not change by the seed of numpy.
+        self.rng = np.random.RandomState(obstacles_seed)
 
         if max_steps is not None:
             self.max_steps = max_steps
@@ -48,6 +57,36 @@ class TwoLWalls(MiniGridEnv):
             goal_pos=self.goal_pos,
             show_goal=self.show_goal,
         )
+
+        if self.obstacles_coverage > 0:
+            num_cells = self.size_without_walls * self.size_without_walls
+            num_obstacles = int(num_cells * self.obstacles_coverage)
+
+            for _ in range(num_obstacles):
+                x = self.rng.randint(1, self.size - 1)
+                y = self.rng.randint(1, self.size - 1)
+
+                # check if we can place obstacle in the randomly selected position
+                while (x, y) in self.obstacles:
+                    x = self.rng.randint(1, self.size - 1)
+                    y = self.rng.randint(1, self.size - 1)
+
+                self.obstacles_init.append((x, y))
+                self.obstacles_colors.append(self.obstacles_coverage_colors[
+                    self.rng.randint(len(self.obstacles_coverage_colors))
+                ])
+
+        # remove obstacles that are within 3 cells of the goal
+        self.obstacles_init = [
+            obs for obs in self.obstacles_init if
+            np.abs(obs[0] - self.goal_pos["x"]) > 3 or np.abs(obs[1] - self.goal_pos["y"]) > 3
+        ]
+
+        # for each corner of the grid, remove obstacles that are within 3 cells of the corner
+        for i, j in itt.product([1, self.size - 2], [1, self.size - 2]):
+            self.obstacles_init = [
+                obs for obs in self.obstacles_init if np.abs(obs[0] - i) > 3 or np.abs(obs[1] - j) > 3
+            ]
 
     def _gen_grid(self, width, height):
 
@@ -95,17 +134,24 @@ class TwoLWalls(MiniGridEnv):
         for (x, y) in self.obstacles:
             self.put_obj(self.obstacle_type(), x, y)
 
-        # Add lava on the left side of the environment
-        self.put_obj(Lava(), 2, 4)
-        self.put_obj(Lava(), 2, 5)
-        self.put_obj(Lava(), 3, 5)
-        self.put_obj(Lava(), 3, 9)
-        self.put_obj(Lava(), 4, 9)
+        if self.size <= 12:
+            # Add lava on the left side of the environment
+            self.put_obj(Lava(), 2, 4)
+            self.put_obj(Lava(), 2, 5)
+            self.put_obj(Lava(), 3, 5)
+            self.put_obj(Lava(), 3, 9)
+            self.put_obj(Lava(), 4, 9)
 
-        # Add lava on the right side of the environment
-        self.put_obj(Lava(), 9, 2)
-        self.put_obj(Lava(), 9, 8)
-        self.put_obj(Lava(), 9, 9)
+            # Add lava on the right side of the environment
+            self.put_obj(Lava(), 9, 2)
+            self.put_obj(Lava(), 9, 8)
+            self.put_obj(Lava(), 9, 9)
+
+        elif self.obstacles_coverage > 0:
+            for idx, (x, y) in enumerate(self.obstacles_init):
+                # get a random color for the floor using self.obstacles_coverage_colors and self.rng
+                self.put_obj(Floor(self.obstacles_colors[idx]), x, y)
+
 
         # Put the goal in the environment
         for i in range(len(self.goal_pos)):
@@ -175,17 +221,23 @@ class TwoLWalls(MiniGridEnv):
         for (x, y) in self.obstacles:
             self.put_obj(self.obstacle_type(), x, y)
 
-        # Add lava on the left side of the environment
-        self.put_obj(Lava(), 2, 4)
-        self.put_obj(Lava(), 2, 5)
-        self.put_obj(Lava(), 3, 5)
-        self.put_obj(Lava(), 3, 9)
-        self.put_obj(Lava(), 4, 9)
+        if self.size <= 12:
+            # Add lava on the left side of the environment
+            self.put_obj(Lava(), 2, 4)
+            self.put_obj(Lava(), 2, 5)
+            self.put_obj(Lava(), 3, 5)
+            self.put_obj(Lava(), 3, 9)
+            self.put_obj(Lava(), 4, 9)
 
-        # Add lava on the right side of the environment
-        self.put_obj(Lava(), 9, 2)
-        self.put_obj(Lava(), 9, 8)
-        self.put_obj(Lava(), 9, 9)
+            # Add lava on the right side of the environment
+            self.put_obj(Lava(), 9, 2)
+            self.put_obj(Lava(), 9, 8)
+            self.put_obj(Lava(), 9, 9)
+
+        elif self.obstacles_coverage > 0:
+            for idx, (x, y) in enumerate(self.obstacles_init):
+                # get a random color for the floor using self.obstacles_coverage_colors and self.rng
+                self.put_obj(Floor(self.obstacles_colors[idx]), x, y)
 
         # Put the goal in the environment
         # self.put_obj(
@@ -292,13 +344,22 @@ class TwoLWalls(MiniGridEnv):
         )
 
 
-class GridworlTwoLWallsGoalLeft(TwoLWalls):
+class GridworldTwoLWallsGoalLeft(TwoLWalls):
     def __init__(self):
         super().__init__(
             size=12,
             env_id=7,
             goal_pos=[dict(x=1, y=6)],
             max_steps=10000,
+            show_goal=True,
+        )
+
+class GridworldTwoLWallsGoalLeft_20x20(TwoLWalls):
+    def __init__(self):
+        super().__init__(
+            size=22,
+            env_id=7,
+            goal_pos=[dict(x=1, y=11)],
             show_goal=True,
         )
 
@@ -310,6 +371,15 @@ class GridworldTwoLWallsGoalRight(TwoLWalls):
             env_id=7,
             goal_pos=[dict(x=10, y=6)],
             max_steps=10000,
+            show_goal=True,
+        )
+
+class GridworldTwoLWallsGoalRight_20x20(TwoLWalls):
+    def __init__(self):
+        super().__init__(
+            size=22,
+            env_id=7,
+            goal_pos=[dict(x=20, y=11)],
             show_goal=True,
         )
 
@@ -360,12 +430,22 @@ class GridworldTwoLWallsNoGoalVisGoalLeftAndRight(TwoLWalls):
 
 register(
     id="MiniGrid-GridworldTwoLWalls-GoalLeft-v0",
-    entry_point="gym_minigrid.envs:GridworlTwoLWallsGoalLeft",
+    entry_point="gym_minigrid.envs:GridworldTwoLWallsGoalLeft",
+)
+
+register(
+    id="MiniGrid-GridworldTwoLWalls-GoalLeft-20x20-v0",
+    entry_point="gym_minigrid.envs:GridworldTwoLWallsGoalLeft_20x20",
 )
 
 register(
     id="MiniGrid-GridworldTwoLWalls-GoalRight-v0",
     entry_point="gym_minigrid.envs:GridworldTwoLWallsGoalRight",
+)
+
+register(
+    id="MiniGrid-GridworldTwoLWalls-GoalRight-20x20-v0",
+    entry_point="gym_minigrid.envs:GridworldTwoLWallsGoalRight_20x20",
 )
 
 register(
