@@ -107,7 +107,7 @@ class manual_control:
     def step(self, action):
 
         obs, reward, terminated, truncated, info = self.env.step(action)
-        print(f"step={self.env.step_count}, reward={reward:.2f}")
+        print(f"step={self.env.step_count}, reward={reward:.2f}, info={info}")
         if self.args.save_images:
             if self.args.agent_view:
                 # save image with the name containing agent_view_true
