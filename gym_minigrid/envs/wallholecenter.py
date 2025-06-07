@@ -96,6 +96,12 @@ class WallHoleCenterEnv(MiniGridEnv):
             np.abs(obs[0] - self.bottleneck_state_top[0]) > 3 or np.abs(obs[1] - self.bottleneck_state_top[1]) > 3
         ]
 
+        # remove obstacles that are within 3 cells of the goal position
+        self.obstacles_init = [
+            obs for obs in self.obstacles_init if
+            np.abs(obs[0] - self.goal_pos["x"]) > 3 or np.abs(obs[1] - self.goal_pos["y"]) > 3
+        ]
+
     def _gen_grid(self, width, height):
 
         """
