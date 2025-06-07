@@ -154,7 +154,6 @@ class TwoLWalls(MiniGridEnv):
                 # get a random color for the floor using self.obstacles_coverage_colors and self.rng
                 self.put_obj(Floor(self.obstacles_colors[idx]), x, y)
 
-
         # Put the goal in the environment
         for i in range(len(self.goal_pos)):
             self.put_obj(
