@@ -314,6 +314,7 @@ class GridworldWallHoleCenter_20x20(WallHoleCenterEnv):
         super().__init__(
             size=22,
             show_goal=True,
+            obstacles_coverage=0.3,
         )
 
 class GridworldCenter_20x20(WallHoleCenterEnv):
@@ -322,6 +323,7 @@ class GridworldCenter_20x20(WallHoleCenterEnv):
             size=22,
             show_goal=True,
             wall_in_center=False,
+            obstacles_coverage=0.3,
         )
 
 
