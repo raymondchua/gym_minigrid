@@ -35,7 +35,8 @@ class WallHoleCenterEnv(MiniGridEnv):
         self.show_goal = show_goal
         self.midpoint = int(self.size / 2)
         self.goal_pos = dict(x=self.midpoint, y=self.midpoint)
-        self.bottleneck_state = (self.size // 2, self.size_without_walls)
+        self.bottleneck_state_top = (self.size // 2, 1)
+        self.bottleneck_state_bottom = (self.size // 2, self.size_without_walls)
         self.obstacles_coverage = obstacles_coverage
         self.obstacles_init = []
         self.obstacles_coverage_colors = ["blue", "red", "yellow"]
@@ -85,10 +86,14 @@ class WallHoleCenterEnv(MiniGridEnv):
                     self.rng.randint(len(self.obstacles_coverage_colors))
                 ])
 
-        # remove obstacles that are within 3 cells of the bottleneck state
+        # remove obstacles that are within 3 cells of the bottleneck state top and bottom
         self.obstacles_init = [
             obs for obs in self.obstacles_init if
-            np.abs(obs[0] - self.bottleneck_state[0]) > 3 or np.abs(obs[1] - self.bottleneck_state[1]) > 3
+            np.abs(obs[0] - self.bottleneck_state_bottom[0]) > 3 or np.abs(obs[1] - self.bottleneck_state_bottom[1]) > 3
+        ]
+        self.obstacles_init = [
+            obs for obs in self.obstacles_init if
+            np.abs(obs[0] - self.bottleneck_state_top[0]) > 3 or np.abs(obs[1] - self.bottleneck_state_top[1]) > 3
         ]
 
     def _gen_grid(self, width, height):
