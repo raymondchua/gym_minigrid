@@ -96,10 +96,10 @@ class WallHoleCenterEnv(MiniGridEnv):
             np.abs(obs[0] - self.bottleneck_state_top[0]) > 3 or np.abs(obs[1] - self.bottleneck_state_top[1]) > 3
         ]
 
-        # remove obstacles that are within 3 cells of the goal position
+        # remove obstacles that are within 5 cells of the goal position
         self.obstacles_init = [
             obs for obs in self.obstacles_init if
-            np.abs(obs[0] - self.goal_pos["x"]) > 3 or np.abs(obs[1] - self.goal_pos["y"]) > 3
+            np.abs(obs[0] - self.goal_pos["x"]) > 5 or np.abs(obs[1] - self.goal_pos["y"]) > 5
         ]
 
     def _gen_grid(self, width, height):
@@ -332,7 +332,7 @@ class GridworldWallHoleCenter_20x20(WallHoleCenterEnv):
         super().__init__(
             size=22,
             show_goal=True,
-            obstacles_coverage=0.2,
+            obstacles_coverage=0.3,
         )
 
 class GridworldCenter_20x20(WallHoleCenterEnv):
@@ -341,7 +341,7 @@ class GridworldCenter_20x20(WallHoleCenterEnv):
             size=22,
             show_goal=True,
             wall_in_center=False,
-            obstacles_coverage=0.2,
+            obstacles_coverage=0.3,
         )
 
 
