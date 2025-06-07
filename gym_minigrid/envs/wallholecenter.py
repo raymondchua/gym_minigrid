@@ -16,21 +16,39 @@ class WallHoleCenterEnv(MiniGridEnv):
     def __init__(
         self,
         size=9,
+        obstacles_coverage: float = 0.0,  # percentage of the grid covered by obstacles
+        obstacles_seed: int = 194,
         agent_start_pos=None,
         agent_start_dir=None,
         obstacle_type=Wall,
         max_steps=None,
         show_goal: bool = True,
+        wall_in_center: bool = True,
     ):
         self.obstacle_type = obstacle_type
         self.size = size
         self.agent_start_pos = agent_start_pos
         self.agent_start_dir = agent_start_dir
+        self.wall_in_center = wall_in_center
 
         self.size_without_walls = size - 2
         self.show_goal = show_goal
         self.midpoint = int(self.size / 2)
         self.goal_pos = dict(x=self.midpoint, y=self.midpoint)
+        self.obstacles_coverage = obstacles_coverage
+        self.obstacles_init = []
+        self.obstacles_coverage_colors = ["blue", "red", "yellow"]
+        self.obstacles_colors = []
+
+        # random seed for obstacles so that the same environment can be generated and not change by the seed of numpy.
+        self.rng = np.random.RandomState(obstacles_seed)
+
+        self.midpoint = int(self.size / 2)
+        self.obstacles = []
+
+        if self.wall_in_center:
+            for i in range(2, self.size - 2):
+                self.obstacles.append((self.midpoint, i))
 
         if max_steps is not None:
             self.max_steps = max_steps
@@ -47,6 +65,24 @@ class WallHoleCenterEnv(MiniGridEnv):
             goal_pos=self.goal_pos,
             show_goal=self.show_goal,
         )
+
+        if self.obstacles_coverage > 0:
+            num_cells = self.size_without_walls * self.size_without_walls
+            num_obstacles = int(num_cells * self.obstacles_coverage)
+
+            for _ in range(num_obstacles):
+                x = self.rng.randint(1, self.size - 1)
+                y = self.rng.randint(1, self.size - 1)
+
+                # check if we can place obstacle in the randomly selected position
+                while (x, y) in self.obstacles:
+                    x = self.rng.randint(1, self.size - 1)
+                    y = self.rng.randint(1, self.size - 1)
+
+                self.obstacles_init.append((x, y))
+                self.obstacles_colors.append(self.obstacles_coverage_colors[
+                    self.rng.randint(len(self.obstacles_coverage_colors))
+                ])
 
     def _gen_grid(self, width, height):
 
@@ -75,11 +111,6 @@ class WallHoleCenterEnv(MiniGridEnv):
         self.agent_pos = (1, 1)
         self.agent_dir = 0
 
-        self.midpoint = int(self.size / 2)
-        self.obstacles = []
-
-        for i in range(2, self.size - 2):
-            self.obstacles.append((self.midpoint, i))
 
         # Add obstacles (Walls) to the environment
         for (x, y) in self.obstacles:
@@ -89,18 +120,24 @@ class WallHoleCenterEnv(MiniGridEnv):
             Goal(show_goal=self.show_goal), self.goal_pos["x"], self.goal_pos["y"]
         )
 
-        # Add lava on the left side of the environment
-        self.put_obj(Lava(), 2, 4)
-        self.put_obj(Lava(), 2, 5)
-        self.put_obj(Lava(), 3, 5)
-        self.put_obj(Lava(), 3, 8)
-        self.put_obj(Lava(), 4, 8)
+        if self.size <= 12:
+            # Add lava on the left side of the environment
+            self.put_obj(Lava(), 2, 4)
+            self.put_obj(Lava(), 2, 5)
+            self.put_obj(Lava(), 3, 5)
+            self.put_obj(Lava(), 3, 8)
+            self.put_obj(Lava(), 4, 8)
 
-        # Add lava on the right side of the environment
-        self.put_obj(Lava(), 9, 2)
-        self.put_obj(Lava(), 8, 6)
-        self.put_obj(Lava(), 8, 7)
-        self.put_obj(Lava(), 8, 8)
+            # Add lava on the right side of the environment
+            self.put_obj(Lava(), 9, 2)
+            self.put_obj(Lava(), 8, 6)
+            self.put_obj(Lava(), 8, 7)
+            self.put_obj(Lava(), 8, 8)
+
+        elif self.obstacles_coverage > 0:
+            for idx, (x, y) in enumerate(self.obstacles_init):
+                # get a random color for the floor using self.obstacles_coverage_colors and self.rng
+                self.put_obj(Floor(self.obstacles_colors[idx]), x, y)
 
         # Place the agent
         if self.agent_start_pos is not None:
@@ -143,12 +180,6 @@ class WallHoleCenterEnv(MiniGridEnv):
         self.custom_agent_pos = custom_agent_pos
         self.custom_agent_dir = custom_agent_dir
 
-        self.midpoint = int(self.size / 2)
-        self.obstacles = []
-
-        for i in range(2, self.size - 2):
-            self.obstacles.append((self.midpoint, i))
-
         # Add obstacles (Walls) to the environment
         for (x, y) in self.obstacles:
             self.put_obj(self.obstacle_type(), x, y)
@@ -157,18 +188,24 @@ class WallHoleCenterEnv(MiniGridEnv):
             Goal(show_goal=self.show_goal), self.goal_pos["x"], self.goal_pos["y"]
         )
 
-        # Add lava on the left side of the environment
-        self.put_obj(Lava(), 2, 4)
-        self.put_obj(Lava(), 2, 5)
-        self.put_obj(Lava(), 3, 5)
-        self.put_obj(Lava(), 3, 8)
-        self.put_obj(Lava(), 4, 8)
+        if self.size <= 12:
+            # Add lava on the left side of the environment
+            self.put_obj(Lava(), 2, 4)
+            self.put_obj(Lava(), 2, 5)
+            self.put_obj(Lava(), 3, 5)
+            self.put_obj(Lava(), 3, 8)
+            self.put_obj(Lava(), 4, 8)
 
-        # Add lava on the right side of the environment
-        self.put_obj(Lava(), 9, 2)
-        self.put_obj(Lava(), 8, 6)
-        self.put_obj(Lava(), 8, 7)
-        self.put_obj(Lava(), 8, 8)
+            # Add lava on the right side of the environment
+            self.put_obj(Lava(), 9, 2)
+            self.put_obj(Lava(), 8, 6)
+            self.put_obj(Lava(), 8, 7)
+            self.put_obj(Lava(), 8, 8)
+
+        elif self.obstacles_coverage > 0:
+            for idx, (x, y) in enumerate(self.obstacles_init):
+                # get a random color for the floor using self.obstacles_coverage_colors and self.rng
+                self.put_obj(Floor(self.obstacles_colors[idx]), x, y)
 
         # Place the agent
         if self.custom_agent_pos is not None:
@@ -272,6 +309,22 @@ class GridworldWallHoleCenter(WallHoleCenterEnv):
         )
 
 
+class GridworldWallHoleCenter_20x20(WallHoleCenterEnv):
+    def __init__(self):
+        super().__init__(
+            size=22,
+            show_goal=True,
+        )
+
+class GridworldCenter_20x20(WallHoleCenterEnv):
+    def __init__(self):
+        super().__init__(
+            size=22,
+            show_goal=True,
+            wall_in_center=False,
+        )
+
+
 class GridworldWallHoleCenterNoGoalVis(WallHoleCenterEnv):
     def __init__(self):
         super().__init__(
@@ -288,4 +341,14 @@ register(
 register(
     id="MiniGrid-Gridworld-WallHoleCenter-NoGoalVis-v0",
     entry_point="gym_minigrid.envs:GridworldWallHoleCenterNoGoalVis",
+)
+
+register(
+    id="MiniGrid-Gridworld-WallHoleCenter-20x20-v0",
+    entry_point="gym_minigrid.envs:GridworldWallHoleCenter_20x20",
+)
+
+register(
+    id="MiniGrid-Gridworld-Center-20x20-v0",
+    entry_point="gym_minigrid.envs:GridworldCenter_20x20",
 )
