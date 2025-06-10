@@ -16,7 +16,7 @@ authors = [
 
 dependencies = [
   "gym>=0.26",
-  "numpy<=2.0.2",
+  "numpy<=2.2.2",
 ]
 
 [project.urls]
